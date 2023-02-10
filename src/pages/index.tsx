@@ -73,7 +73,7 @@ export default function Home({ todoLists }: { todoLists: List[] }) {
           {
             loading ?
               <div className={styles.cardLoader}>
-                <Image src={loaderGif} />
+                <Image src={loaderGif} alt="loader" />
               </div>
               :
               <form className={styles.cardForm} onSubmit={createTodoList}>

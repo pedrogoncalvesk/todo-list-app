@@ -64,11 +64,11 @@ export default function TodoList({ todoList }: { todoList: List }) {
           <h1 className={styles.title}>
             TODO List: <a href={`/list/${todoList.id}`}>{todoList.name}</a>
           </h1>
-          <h4 className={styles.subTitle}>Compartilhe o link da sua lista de tarefas: <a href={`/list/${todoList.id}`} target="_blank">{`${env.NEXT_PUBLIC_APP_URL}/lists/${todoList.id}`}</a></h4>
+          <h4 className={styles.subTitle}>Compartilhe o link da sua lista de tarefas: <a href={`/list/${todoList.id}`} target="_blank" rel="noopener noreferrer">{`${env.NEXT_PUBLIC_APP_URL}/lists/${todoList.id}`}</a></h4>
           {
             loading ?
               <div className={styles.cardLoader}>
-                <Image src={loaderGif} />
+                <Image src={loaderGif} alt="loader" />
               </div>
               :
               <form className={styles.cardForm} onSubmit={e => createTodo(e, todoList)}>
