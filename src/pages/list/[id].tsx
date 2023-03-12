@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 import Todo, { List, Item } from '../../components/Todo';
-import { get } from '../api/lists/[id]'
+import { get } from '../../services/todo-list.service'
 import loaderGif from '../../assets/loader.gif'
 import debounce from '../../commons/lib/debounce';
 import env from '../../commons/environment';
@@ -93,7 +93,7 @@ export default function TodoList({ todoList }: { todoList: List }) {
 
 export async function getServerSideProps(context: NextPageContext) {
   const { id } = context.query
-  const todoList = await get(String(id));
+  const todoList = await get(String(id), false);
 
   if (!todoList) {
     return {

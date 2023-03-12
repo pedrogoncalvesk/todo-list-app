@@ -4,11 +4,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 import Todo, { List, Item } from '../components/Todo';
-import { findAll } from './api/lists'
+import { getAll } from '../services/todo-list.service';
 import loaderGif from '../assets/loader.gif'
 import debounce from '../commons/lib/debounce';
 import styles from '../styles/Home.module.css'
-
 
 export default function Home({ todoLists }: { todoLists: List[] }) {
   const router: NextRouter = useRouter()
@@ -98,7 +97,7 @@ export default function Home({ todoLists }: { todoLists: List[] }) {
 }
 
 export async function getServerSideProps() {
-  const todoLists = await findAll();
+  const todoLists = await getAll(false);
 
   return {
     props: { todoLists },
