@@ -95,6 +95,12 @@ export async function getServerSideProps(context: NextPageContext) {
   const { id } = context.query
   const todoList = await get(String(id));
 
+  if (!todoList) {
+    return {
+      notFound: true
+    }
+  }
+
   return {
     props: { todoList },
   }
